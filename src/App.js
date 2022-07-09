@@ -19,8 +19,8 @@ const App = () => {
 
   async function getRatio(tick, setPerc){
 
-    const Votes = Moralis.Object.extend("Votes");
-    const query = new Moralis.Query(Votes);
+    const Vote = Moralis.Object.extend("Vote");
+    const query = new Moralis.Query(Vote);
     query.equalTo("ticker", tick);
     query.descending("createdAt");
     const results = await query.first();
@@ -40,7 +40,7 @@ const App = () => {
 
 
     async function createLiveQuery(){
-      let query = new Moralis.Query('Votes');
+      let query = new Moralis.Query('Vote');//'Vote' is the name of the model-database in moralis sync
       let subscription = await query.subscribe();
       subscription.on('update', (object) => {
         
@@ -121,13 +121,13 @@ const App = () => {
         title={modalToken}
       >
         <div>
-          <span style={{ color: "white" }}>{`Price: `}</span>
+          <span style={{ color: "pink" }}>{`Price: `}</span>
           {modalPrice}$
         </div>
 
 
          <div>
-          <span style={{ color: "white" }}>{`About`}</span>
+          <span style={{ color: "pink" }}>{`About`}</span>
         </div>
         <div>
           {modalToken &&

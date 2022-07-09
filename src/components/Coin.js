@@ -1,127 +1,121 @@
 import React, { useEffect, useState } from "react";
 import "./Coin.css";
-import {Button} from "web3uikit";
-import {useWeb3ExecuteFunction, useMoralis} from 'react-moralis';
+import { Button } from "web3uikit";
+import { useWeb3ExecuteFunction, useMoralis } from "react-moralis";
 
-//this is where we build our executing smart contract functionality
-
-function Coin({perc, setPerc, token, setModalToken, setVisible}) {
-
+function Coin({ perc, token, setModalToken, setVisible }) {
   const [color, setColor] = useState();
-
   const contractProcessor = useWeb3ExecuteFunction();
-  const {isAuthenticated} = useMoralis();//you have to connecrt your wallet int order to authenticate and vote
+  const { isAuthenticated} = useMoralis();
+
 
   useEffect(() => {
-    if(perc < 50){
-      setColor("red");
-    }
-    else if(perc >= 50){
+    if (perc < 50) {
+      setColor("#c43d08");
+    } else {
       setColor("green");
     }
   }, [perc]);
 
 
-async function vote(upDown){
-let options = {
-  contractAddress: "0x2feAc795E78c71440fDD58faacd0BeEED19F0FA1",
-  functionName: "vote",
-  abi: [{"inputs":[{"internalType":"string","name":"_ticker","type":"string"},{"internalType":"bool","name":"_vote","type":"bool"}],"name":"vote","outputs":[],"stateMutability":"nonpayable","type":"function"}],
-  params: {
-    _ticker: token,
-    _vote: upDown
-  },
-}
+  async function vote(upDown){
 
-
-  /* await contractProcessor.fetch({
-    params:options,
-    onSuccess: () => {
-      console.log('vote successful')
-    },
-    onError: (error) => {
-      alert(error.data.message)
+    let options = {
+      contractAddress: "0x2feAc795E78c71440fDD58faacd0BeEED19F0FA1",
+      functionName: "vote",
+      abi: [
+        {
+          "inputs": [
+            {
+              "internalType": "string",
+              "name": "_ticker",
+              "type": "string"
+            },
+            {
+              "internalType": "bool",
+              "name": "_vote",
+              "type": "bool"
+            }
+          ],
+          "name": "vote",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        }
+      ],
+      params: {
+        _ticker: token,
+        _vote: upDown,
+      },
     }
-  }) */
-  
-  await contractProcessor.fetch({
-   params:options,
-   onSuccess: () => {
-     console.log('vote successful')
-   },
-   onError: (error) => {
-      alert(error.data.message)
-    }
-  })
-}
 
+
+    await contractProcessor.fetch({
+      params: options,
+      onSuccess: () => {
+        console.log("vote succesful");
+      },
+      onError: (error) => {
+        alert(error.data.message)
+      }
+    });
+
+  }
 
   return (
     <>
-    <div>
-     <div className = "token">{token}</div>
-        <div className = "circle" 
-        style = {{
-            boxShadow: `0 0 20px ${color}`
-          }}>
-
-          <div className = "wave" 
-          style = {{ 
-            backgroundColor: color,
-            marginTop: `${100 - perc}%`,
-            boxShadow: `0 0 20px ${color}`
-           
-          }}>
-
-          </div>
-
-          <div className = "percentage">
-            {perc}%
-          </div>
-
-        </div>
-         <div className = "votes">
-              <Button 
-              onClick = {() => {
-                if(isAuthenticated){
-                  vote(true)
-                }
-                else{
-                  alert("You need to connect your wallet to vote")
-                }
-              }
-            }
-              text = "Up"
-              theme = "primary"
-              type = "button"
-              />
-              <Button 
-              onClick = {() => {if(isAuthenticated){
-                vote(false)
-              }
-              else{
-                alert("You need to connect your wallet to vote")
-              }
+      <div>
+        <div className="token">{token}</div>
+        <div className="circle" style={{ boxShadow: `0 0 20px ${color}` }}>
+          <div
+            className="wave"
+            style={{
+              marginTop: `${100 - perc}%`,
+              boxShadow: `0 0 20px ${color}`,
+              backgroundColor: color,
             }}
-              color = "red"
-              text = "Down"
-              theme = "colored"
-              type = "button"
-              />
-         </div>
-          <div className = "votes">
-            <Button 
-            onClick = {() => {
-              setModalToken(token);
+          ></div>
+          <div className="percentage">{perc}%</div>
+        </div>
+
+        <div className="votes">
+          <Button 
+            onClick={() => {
+              if(isAuthenticated){
+                vote(true)
+              }else{
+                alert("Authenicate to Vote")
+              }}} 
+            text="Up" 
+            theme="primary" 
+            type="button" 
+          />
+
+          <Button
+            color="red"
+            onClick={() => {
+              if(isAuthenticated){
+                vote(false)
+              }else{
+                alert("Authenicate to Vote")
+              }}}
+            text="Down"
+            theme="colored"
+            type="button"
+          />
+        </div>
+        <div className="votes">
+            <Button
+            onClick={()=>{
+              setModalToken(token)
               setVisible(true);
             }}
-            text = "More Info"
-            theme = "translucent"
-            type = "button"
-            />
-          </div>
-    </div>
-
+            text="INFO"
+            theme="translucent"
+            type="button"
+          />
+        </div>
+      </div>
     </>
   );
 }
