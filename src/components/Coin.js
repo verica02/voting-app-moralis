@@ -66,7 +66,7 @@ function Coin({ perc, token, setModalToken, setVisible }) {
     <>
       <div>
         <div className="token">{token}</div>
-        <div className="circle" style={{ boxShadow: `0 0 20px ${color}` }}>
+        <div className="circle">
           <div
             className="wave"
             style={{

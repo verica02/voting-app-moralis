@@ -35,6 +35,7 @@
 
 .instructions{
   margin-top: 50px;
+  margin-bottom: 50px;
   height:150px;
   display: flex;
   justify-content: center;
@@ -49,7 +50,7 @@
 
 
 .sc-kTvvXX {
-  background-color: #202c37 !important;
+  background-color: #313747 !important;
   width: 40vw !important;
   height: 450px;
 }
