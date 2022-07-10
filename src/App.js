@@ -5,6 +5,8 @@ import logo from "./images/Moralis.png";
 import Coin from "./components/Coin";
 import {abouts} from "./about";
 import { useMoralisWeb3Api, useMoralis } from "react-moralis";
+import styled, { css } from 'styled-components'
+
 
 const App = () => {
   const [btc, setBtc] = useState(80);
@@ -85,7 +87,7 @@ const App = () => {
           <img src={logo} alt="logo" height="50px" />
           Sentiment
         </div>
-        <ConnectButton />
+        <ConnectButton style={{ color: "pink",background: "black"}}/>
       </div>
       <div className="instructions">
         Where do you think these tokens are going? Up or Down?
@@ -121,13 +123,13 @@ const App = () => {
         title={modalToken}
       >
         <div>
-          <span style={{ color: "pink" }}>{`Price: `}</span>
+          <span style={{ color: "orange" }}>{`Price: `}</span>
           {modalPrice}$
         </div>
 
 
          <div>
-          <span style={{ color: "pink" }}>{`About`}</span>
+          <span style={{ color: "orange" }}>{`About`}</span>
         </div>
         <div>
           {modalToken &&
