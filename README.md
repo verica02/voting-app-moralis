@@ -1,15 +1,11 @@
-# Basic Sample Hardhat Project
+# voting-dapp
+This is a voting dapp made with :
+- Hardhat: Write, compile, deploy and verify a solidity smart contract
+- React: Build a simple single page web application
+- Web3uikit: Use the leading UI library for web3 applications
+- Moralis: Sync Smart Contract Events, Database live queries and Web3Api calls!
+# Demo
+https://voting-app-moralis.vercel.app/  💖
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
+![Alt Text](https://user-images.githubusercontent.com/77109037/178119911-abbac8a5-7dfb-49c6-8239-f62cd04418fc.gif)
 
-Try running some of the following tasks:
-
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
-```
