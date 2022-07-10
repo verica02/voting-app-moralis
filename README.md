@@ -7,5 +7,6 @@ This is a voting dapp made with :
 # Demo
 https://voting-app-moralis.vercel.app/  💖
 
-![Alt Text](https://user-images.githubusercontent.com/77109037/178119911-abbac8a5-7dfb-49c6-8239-f62cd04418fc.gif)
+![image](https://user-images.githubusercontent.com/77109037/178165002-3e56d253-5e84-43fd-95d5-d53e03837a2a.png)
+
 
