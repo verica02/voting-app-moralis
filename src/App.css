@@ -28,7 +28,7 @@
   display: flex;
   gap:10px;
   font-size: 40px;
-  font-weight: 600;
+  font-weight: 800;
   color: white;
   align-items: center;
 }
@@ -42,8 +42,8 @@
   width: 600px;
   margin: auto;
   font-size: 30px;
-  font-weight: 600;
-  color: white;
+  font-weight: 400;
+  color: rgba(124, 126, 126, 0.669);
   text-align: center;
   line-height: 50px;
 }

@@ -1,11 +1,13 @@
 body {
-  background-color: #cddeef;
+  
+  background: linear-gradient(180deg, rgba(123,205,236,0.5329482134650736) 30%, rgba(233,239,240,0.6842087176667542) 100%) no-repeat center center fixed;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
 }
 
 code {
